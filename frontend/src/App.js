@@ -27,7 +27,9 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken());
 
-    const socket = io();
+    const socket = io("http://localhost:8080", {
+      transports: ["websocket"]
+    });
     dispatch({type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close()
   }, [dispatch]);

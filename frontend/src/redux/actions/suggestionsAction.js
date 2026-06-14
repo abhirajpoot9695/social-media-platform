@@ -1,4 +1,4 @@
-import { GLOBALTYPES } from '../actions/globalTypes';
+import { GLOBALTYPES } from './globalTypes';
 import { getDataAPI } from '../../utils/fetchData';
 
 

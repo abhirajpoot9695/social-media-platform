@@ -36,7 +36,7 @@ const authCtrl = {
         password: passwordHash,
         gender,
       });
-
+   
       const access_token = createAccessToken({ id: newUser._id });
       const refresh_token = createRefreshToken({ id: newUser._id });
 

@@ -5,10 +5,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const SocketServer = require('./socketServer');
 const corsOptions = {
-  Credential: 'true',
+  origin : 'http://localhost:3000',
+  credentials: 'true',
   
 };
-
 
 const app = express();
 
@@ -20,7 +20,9 @@ app.use(cookieParser())
 
 //#region // !Socket
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  cors: corsOptions
+});
 
 
 
@@ -42,6 +44,7 @@ app.use('/api', require('./routes/messageRouter'));
 
 
 const URI = process.env.MONGODB_URL;
+console.log(process.env.MONGODB_URL)
 mongoose.connect(URI, {
     useCreateIndex:true,
     useFindAndModify:false,
@@ -56,3 +59,13 @@ const port = process.env.PORT || 8080;
 http.listen(port, () => {
   console.log("Listening on ", port);
 });
+
+
+
+
+
+
+
+
+
+
